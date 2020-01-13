@@ -8,12 +8,13 @@ function FilterBar({ cuisines, selected, handleClick }) {
   };
 
   return (
-    <div>
+    <div className="btn-group" role="group">
       {cuisines.map(cuisine => (
         <button
           key={cuisine._id}
           className={getClass(cuisine, selected)}
           onClick={() => handleClick(cuisine)}
+          data-testid={`filter-btn-${cuisine.name.toLowerCase()}`}
         >
           {cuisine.name}
         </button>

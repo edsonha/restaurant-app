@@ -12,11 +12,17 @@ class HomePage extends Component {
   };
 
   handleCuisineSelect = cuisine => {
-    this.setState({ selectedCuisine: cuisine });
+    const chosenCuisine = cuisine.name === "All" ? null : cuisine;
+    this.setState({ selectedCuisine: chosenCuisine });
   };
 
   render() {
     const { restaurants, cuisines, selectedCuisine } = this.state;
+    const filteredRestaurants = selectedCuisine
+      ? restaurants.filter(restaurant => {
+          return restaurant.cuisine.name === selectedCuisine.name;
+        })
+      : restaurants;
     return (
       <div className="container">
         <div className="row">
@@ -30,7 +36,7 @@ class HomePage extends Component {
         </div>
 
         <div className="row">
-          {restaurants.map(restaurant => {
+          {filteredRestaurants.map(restaurant => {
             return (
               <div
                 className="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex"
