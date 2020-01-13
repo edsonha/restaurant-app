@@ -1,14 +1,8 @@
 import React from "react";
-import "./App.css";
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
-  return (
-    <div className="App">
-      <div class="alert alert-primary" role="alert">
-        Test Page
-      </div>
-    </div>
-  );
+  return <HomePage />;
 }
 
 export default App;
