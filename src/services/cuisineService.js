@@ -17,6 +17,15 @@ const cuisines = [
   }
 ];
 
+const defaultCuisine = {
+  _id: "5c3430ecfc13ae122d000005",
+  name: "All"
+};
+
 export function getCuisines() {
   return cuisines;
+}
+
+export function getDefaultCuisine() {
+  return defaultCuisine;
 }
