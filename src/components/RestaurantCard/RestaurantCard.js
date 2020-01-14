@@ -14,14 +14,15 @@ function RestaurantCard({ details }) {
         <h6 className="card-subtitle mb-2 text-muted">
           {details.cuisine.name}
         </h6>
-        <p className="card-text">
+        <h6 className="card-subtitle text-muted">
           {" "}
-          {details.openingTime} - {details.closingTime}
-        </p>
+          {details.openingTime} - {details.closingTime} <br />
+          Avg Price: ${details.averagePrice}
+        </h6>
       </div>
 
       <div className="card-footer text-muted">
-        <button className="btn btn-primary btn-sm">Order</button>
+        <button className="btn btn-primary btn-sm mx-1">Order</button>
       </div>
     </div>
   );

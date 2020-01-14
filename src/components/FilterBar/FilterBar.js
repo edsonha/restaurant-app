@@ -1,10 +1,12 @@
 import React from "react";
 
 function FilterBar({ cuisines, selected, handleClick }) {
-  const getClass = (cuisine, selected) => {
-    if (!selected && cuisine.name === "All") return "btn btn-primary";
-    if (selected && cuisine.name === selected.name) return "btn btn-primary";
-    return "btn btn-outline-primary";
+  const getClass = cuisine => {
+    if (selected === cuisine) {
+      return "btn btn-outline-primary active";
+    } else {
+      return "btn btn-outline-primary";
+    }
   };
 
   return (
@@ -12,7 +14,7 @@ function FilterBar({ cuisines, selected, handleClick }) {
       {cuisines.map(cuisine => (
         <button
           key={cuisine._id}
-          className={getClass(cuisine, selected)}
+          className={getClass(cuisine)}
           onClick={() => handleClick(cuisine)}
           data-testid={`filter-btn-${cuisine.name.toLowerCase()}`}
         >

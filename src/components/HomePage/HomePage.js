@@ -8,21 +8,21 @@ class HomePage extends Component {
   state = {
     restaurants: getRestaurants(),
     cuisines: [getDefaultCuisine(), ...getCuisines()],
-    selectedCuisine: null
+    selectedCuisine: getDefaultCuisine()
   };
 
   handleCuisineSelect = cuisine => {
-    const chosenCuisine = cuisine.name === "All" ? null : cuisine;
-    this.setState({ selectedCuisine: chosenCuisine });
+    this.setState({ selectedCuisine: cuisine });
   };
 
   render() {
     const { restaurants, cuisines, selectedCuisine } = this.state;
-    const filteredRestaurants = selectedCuisine
-      ? restaurants.filter(restaurant => {
-          return restaurant.cuisine.name === selectedCuisine.name;
-        })
-      : restaurants;
+    const filteredRestaurants =
+      selectedCuisine === getDefaultCuisine()
+        ? restaurants
+        : restaurants.filter(restaurant => {
+            return restaurant.cuisine.name === selectedCuisine.name;
+          });
     return (
       <div className="container">
         <div className="row">

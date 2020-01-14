@@ -21,7 +21,10 @@ describe("Filter Bar", () => {
     );
     expect(getByText(/all/i)).toBeInTheDocument();
     expect(getByText(/western/i)).toBeInTheDocument();
-    expect(getByText(/all/i)).toHaveAttribute("class", "btn btn-primary");
+    expect(getByText(/all/i)).toHaveAttribute(
+      "class",
+      "btn btn-outline-primary"
+    );
   });
 
   it("should highlight the cuisine when it is selected", () => {
@@ -42,6 +45,9 @@ describe("Filter Bar", () => {
     );
     expect(getByText(/all/i)).toBeInTheDocument();
     expect(getByText(/western/i)).toBeInTheDocument();
-    expect(getByText(/western/i)).toHaveAttribute("class", "btn btn-primary");
+    expect(getByText(/western/i)).toHaveAttribute(
+      "class",
+      "btn btn-outline-primary active"
+    );
   });
 });
