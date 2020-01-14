@@ -6,7 +6,8 @@ function SortBySelect({ options, handleSelect }) {
       <label htmlFor="sort-by-select">Sort By</label>
       <select
         onChange={handleSelect}
-        name="sort-by-select"
+        id="sort-by-select"
+        data-testid="sort-by-select"
         className="btn btn-primary dropdown-toggle mx-2"
       >
         {options.map((option, index) => (
