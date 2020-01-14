@@ -70,7 +70,7 @@ class HomePage extends Component {
     );
 
     return (
-      <div className="container">
+      <div data-testid="home-page">
         <div className="row">
           <div className="col-auto mr-auto mt-3">
             <FilterBar
