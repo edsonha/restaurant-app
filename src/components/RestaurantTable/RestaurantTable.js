@@ -21,7 +21,7 @@ function RestaurantTable({ restaurants, handleDelete }) {
       </thead>
       <tbody>
         {sortedList.map(restaurant => (
-          <tr key={restaurant._id}>
+          <tr key={restaurant._id} data-testid="restaurant-table-row">
             <td>{restaurant.name}</td>
             <td>{restaurant.address}</td>
             <td>
