@@ -7,7 +7,7 @@ function SelectInput({ name, label, options, onChange }) {
       <select
         defaultValue=""
         className="custom-select"
-        id={`${name}-input`}
+        id={`${name}-select`}
         name={name}
         onChange={onChange}
       >
