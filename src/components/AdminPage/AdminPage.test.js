@@ -1,5 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
 import AdminPage from "./AdminPage";
 import * as RestaurantService from "../../services/restaurantService";
 
@@ -42,14 +44,24 @@ afterEach(() => {
 
 describe("Admin Page", () => {
   it("should display list of two restaurants on load", () => {
-    const { getAllByText } = render(<AdminPage />);
+    const history = createMemoryHistory({ initialEntries: ["/"] });
+    const { getAllByText } = render(
+      <Router history={history}>
+        <AdminPage />
+      </Router>
+    );
 
     expect(RestaurantService.getRestaurants).toHaveBeenCalledTimes(1);
     expect(getAllByText("Delete").length).toEqual(2);
   });
 
   it("should remove the restaurant row from the table when the delete button of specific restaurant is clicked", () => {
-    const { getAllByText, queryByText } = render(<AdminPage />);
+    const history = createMemoryHistory({ initialEntries: ["/"] });
+    const { getAllByText, queryByText } = render(
+      <Router history={history}>
+        <AdminPage />
+      </Router>
+    );
     const firstDeleteBtn = getAllByText("Delete")[0];
     fireEvent.click(firstDeleteBtn);
     expect(
@@ -58,7 +70,12 @@ describe("Admin Page", () => {
   });
 
   it("should display list of two restaurants that are sorted by name", () => {
-    const { getAllByTestId } = render(<AdminPage />);
+    const history = createMemoryHistory({ initialEntries: ["/"] });
+    const { getAllByTestId } = render(
+      <Router history={history}>
+        <AdminPage />
+      </Router>
+    );
 
     expect(getAllByTestId("restaurant-table-row").length).toEqual(2);
     const first = getAllByTestId("restaurant-table-row")[0];
