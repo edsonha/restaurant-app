@@ -44,7 +44,7 @@ class RestaurantForm extends Component {
   render() {
     const { cuisines } = this.state;
     return (
-      <div>
+      <div data-testid="create-page">
         <h3>New Restaurant</h3>
         <form onSubmit={this.handleSubmit}>
           <Input name="name" label="Name" onChange={this.handleChange} />

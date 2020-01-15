@@ -24,4 +24,17 @@ describe("App", () => {
     fireEvent.click(getByText(/orders/i));
     expect(getByTestId("order-page")).toBeInTheDocument();
   });
+
+  it("should navigate to the restaurant form when Create New button is clicked", () => {
+    const history = createMemoryHistory({ initialEntries: ["/admin"] });
+    const { getByText, getByTestId } = render(
+      <Router history={history}>
+        <App />
+      </Router>
+    );
+
+    fireEvent.click(getByText(/admin/i));
+    fireEvent.click(getByText(/create new/i));
+    expect(getByTestId("create-page")).toBeInTheDocument();
+  });
 });
