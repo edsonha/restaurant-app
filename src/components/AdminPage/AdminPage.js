@@ -1,11 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
+import RestaurantTable from "../RestaurantTable/RestaurantTable";
+import { getRestaurants } from "../../services/restaurantService";
 
-function AdminPage() {
-  return (
-    <div data-testid="admin-page">
-      <h1>Admin Page</h1>
-    </div>
-  );
+class AdminPage extends Component {
+  state = {
+    restaurants: getRestaurants()
+  };
+
+  render() {
+    const { restaurants } = this.state;
+    return (
+      <div data-testid="admin-page">
+        <RestaurantTable restaurants={restaurants} />
+      </div>
+    );
+  }
 }
 
 export default AdminPage;

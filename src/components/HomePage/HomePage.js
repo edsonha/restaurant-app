@@ -72,7 +72,7 @@ class HomePage extends Component {
     return (
       <div data-testid="home-page">
         <div className="row">
-          <div className="col-auto mr-auto mt-3">
+          <div className="col-auto mr-auto">
             <FilterBar
               cuisines={cuisines}
               selected={selectedCuisine}
