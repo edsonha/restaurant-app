@@ -16,6 +16,7 @@ function Input({ name, label, type = "text", onChange }) {
         <input
           type="number"
           min="1"
+          step="0.1"
           className="form-control"
           id={`${name}-input`}
           name={name}

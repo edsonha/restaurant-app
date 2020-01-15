@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getCuisines } from "../../services/cuisineService";
+import { saveRestaurant } from "../../services/restaurantService";
 import Input from "../common/Input/Input";
 import SelectInput from "../common/Input/SelectInput";
 
@@ -22,7 +23,15 @@ class RestaurantForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.data);
+
+    const { cuisineId, averagePrice } = this.state.data;
+    const cuisine = getCuisines().find(cuisine => cuisine._id === cuisineId);
+    const restaurant = { ...this.state.data };
+    delete restaurant.cuisineId;
+    restaurant.cuisine = cuisine;
+    restaurant.averagePrice = parseFloat(averagePrice);
+    saveRestaurant(restaurant);
+
     this.props.history.replace(this.props.returnPath);
   };
 
@@ -51,19 +60,19 @@ class RestaurantForm extends Component {
             onChange={this.handleChange}
           />
           <SelectInput
-            name="cuisine"
+            name="cuisineId"
             label="Cuisine"
             options={cuisines}
             onChange={this.handleChange}
           />
           <Input
-            name="average-price"
+            name="averagePrice"
             label="Average Price"
             type="number"
             onChange={this.handleChange}
           />
           <Input
-            name="image-url"
+            name="imageUrl"
             label="Image URL"
             onChange={this.handleChange}
           />
