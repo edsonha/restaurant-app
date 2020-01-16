@@ -1,6 +1,6 @@
 # Restaurant App
 
-Web application of restaurant app
+A front-end web application of restaurant listing. Built using React and bootstrap.
 
 ## Start the app
 
