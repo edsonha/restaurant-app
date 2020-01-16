@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function RestaurantTable({ restaurants, handleDelete }) {
   const sortedList = restaurants.sort((first, second) => {
@@ -17,6 +18,7 @@ function RestaurantTable({ restaurants, handleDelete }) {
           <th>Cuisine</th>
           <th>AveragePrice</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +31,14 @@ function RestaurantTable({ restaurants, handleDelete }) {
             </td>
             <td>{restaurant.cuisine.name}</td>
             <td>${restaurant.averagePrice.toFixed(2)}</td>
+            <td>
+              <Link
+                className="btn btn-primary btn-sm"
+                to={`/restaurants/${restaurant._id}`}
+              >
+                Edit
+              </Link>
+            </td>
             <td>
               <button
                 className="btn btn-danger btn-sm"

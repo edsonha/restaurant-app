@@ -22,6 +22,12 @@ function App() {
                 <RestaurantForm {...props} returnPath="/admin" />
               )}
             />
+            <Route
+              path="/restaurants/:id"
+              render={props => (
+                <RestaurantForm {...props} returnPath="/admin" />
+              )}
+            />
           </Switch>
         </main>
       </div>
