@@ -72,14 +72,14 @@ class HomePage extends Component {
     return (
       <div data-testid="home-page">
         <div className="row">
-          <div className="col-auto mr-auto">
+          <div className="col-auto mr-auto mt-2">
             <FilterBar
               cuisines={cuisines}
               selected={selectedCuisine}
               handleClick={this.handleCuisineSelect}
             />
           </div>
-          <div className="col-auto mt-3">
+          <div className="col-auto mt-2">
             <SortBySelect
               options={sortByOptions}
               handleSelect={this.handleSortSelect}
