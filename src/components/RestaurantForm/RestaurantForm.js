@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { getCuisines } from "../../services/cuisineService";
-import { saveRestaurant } from "../../services/restaurantService";
+import {
+  getRestaurant,
+  saveRestaurant
+} from "../../services/restaurantService";
 import Input from "../common/input/Input";
 import SelectInput from "../common/input/SelectInput";
 import TimeInput from "../common/input/TimeInput";
@@ -20,6 +23,16 @@ class RestaurantForm extends Component {
         imageUrl: ""
       }
     };
+  }
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    const restaurantFound = getRestaurant(id);
+    if (!restaurantFound) return;
+    const newRestaurant = { ...restaurantFound };
+    newRestaurant.cuisineId = newRestaurant.cuisine._id;
+    delete newRestaurant.cuisine;
+    this.setState({ data: newRestaurant });
   }
 
   handleSubmit = e => {
@@ -44,38 +57,62 @@ class RestaurantForm extends Component {
 
   render() {
     const { cuisines } = this.state;
+    const {
+      name,
+      address,
+      openingTime,
+      closingTime,
+      cuisineId,
+      averagePrice,
+      imageUrl
+    } = this.state.data;
     return (
       <div data-testid="create-page">
         <h3>New Restaurant</h3>
         <form onSubmit={this.handleSubmit}>
-          <Input name="name" label="Name" onChange={this.handleChange} />
-          <Input name="address" label="Address" onChange={this.handleChange} />
+          <Input
+            name="name"
+            label="Name"
+            onChange={this.handleChange}
+            value={name}
+          />
+          <Input
+            name="address"
+            label="Address"
+            onChange={this.handleChange}
+            value={address}
+          />
           <TimeInput
             name="openingTime"
             label="Opening Time"
             onChange={this.handleChange}
+            value={openingTime}
           />
           <TimeInput
             name="closingTime"
             label="Closing Time"
             onChange={this.handleChange}
+            value={closingTime}
           />
           <SelectInput
             name="cuisineId"
             label="Cuisine"
             options={cuisines}
             onChange={this.handleChange}
+            value={cuisineId}
           />
           <Input
             name="averagePrice"
             label="Average Price"
             type="number"
             onChange={this.handleChange}
+            value={averagePrice}
           />
           <Input
             name="imageUrl"
             label="Image URL"
             onChange={this.handleChange}
+            value={imageUrl}
           />
           <button className="btn btn-primary btn-sm">Save</button>
         </form>
