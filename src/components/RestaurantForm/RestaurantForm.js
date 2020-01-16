@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { getCuisines } from "../../services/cuisineService";
 import { saveRestaurant } from "../../services/restaurantService";
-import Input from "../common/Input/Input";
-import SelectInput from "../common/Input/SelectInput";
+import Input from "../common/input/Input";
+import SelectInput from "../common/input/SelectInput";
+import TimeInput from "../common/input/TimeInput";
 
 class RestaurantForm extends Component {
   constructor(props) {
@@ -49,12 +50,12 @@ class RestaurantForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <Input name="name" label="Name" onChange={this.handleChange} />
           <Input name="address" label="Address" onChange={this.handleChange} />
-          <Input
+          <TimeInput
             name="openingTime"
             label="Opening Time"
             onChange={this.handleChange}
           />
-          <Input
+          <TimeInput
             name="closingTime"
             label="Closing Time"
             onChange={this.handleChange}
